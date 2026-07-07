@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Aboard! Rowan is Turning 3</title>
+    <!-- Importing bespoke fonts for that vintage railway feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rye&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rail-dark: #1e293b;
+            --caboose-red: #d32f2f;
+            --ticket-bg: #fffbf0;
+            --accent-blue: #4a90e2;
+            --bg-color: #8bbce0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* Playful diagonal stripe background to avoid a flat look */
+            background-color: var(--bg-color);
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(255, 255, 255, 0.2) 20px,
+                rgba(255, 255, 255, 0.2) 40px
+            );
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--rail-dark);
+        }
+
+        /* Using a CSS drop-shadow filter so the shadow follows the ticket cutouts */
+        .ticket-wrapper {
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.15));
+            width: 100%;
+            max-width: 550px;
+        }
+
+        /* The actual ticket with radial-gradient cutouts on the sides */
+        .ticket {
+            background-color: var(--ticket-bg);
+            background-image: 
+                radial-gradient(circle at 0% 50%, transparent 22px, var(--ticket-bg) 23px),
+                radial-gradient(circle at 100% 50%, transparent 22px, var(--ticket-bg) 23px);
+            background-size: 51% 100%;
+            background-position: left, right;
+            background-repeat: no-repeat;
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Decorative inner border */
+        .ticket-inner {
+            border: 2px dashed var(--rail-dark);
+            border-radius: 8px;
+            padding: 30px 20px;
+        }
+
+        h1 {
+            font-family: 'Rye', serif;
+            color: var(--caboose-red);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-blue);
+        }
+
+        .details-box {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .detail-item strong {
+            display: block;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--caboose-red);
+            margin-bottom: 4px;
+        }
+
+        .detail-item p {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Custom stylish button for the Google Form */
+        .rsvp-btn {
+            display: inline-block;
+            background-color: var(--caboose-red);
+            color: white;
+            text-decoration: none;
+            padding: 16px 32px;
+            font-size: 1.2rem;
+            font-family: 'Rye', serif;
+            border-radius: 50px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 0 #9a0000;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .rsvp-btn:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #9a0000;
+            background-color: #e53935;
+        }
+
+        .rsvp-btn:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+
+        /* Playful CSS train animation */
+        .track-container {
+            margin-top: 40px;
+            border-bottom: 4px dashed var(--rail-dark);
+            height: 50px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0.8;
+        }
+
+        .train {
+            font-size: 2.2rem;
+            position: absolute;
+            bottom: -8px;
+            animation: chug 7s linear infinite;
+        }
+
+        @keyframes chug {
+            0% { left: -100px; }
+            100% { left: 100%; }
+        }
+
+        /* Fake barcode for the vintage ticket aesthetic */
+        .barcode {
+            height: 40px;
+            width: 70%;
+            margin: 30px auto 0;
+            background: repeating-linear-gradient(
+                to right,
+                var(--rail-dark),
+                var(--rail-dark) 4px,
+                transparent 4px,
+                transparent 7px,
+                var(--rail-dark) 7px,
+                var(--rail-dark) 9px,
+                transparent 9px,
+                transparent 14px,
+                var(--rail-dark) 14px,
+                var(--rail-dark) 16px
+            );
+            opacity: 0.6;
+        }
+
+        .ticket-number {
+            font-family: monospace;
+            font-size: 0.8rem;
+            margin-top: 8px;
+            letter-spacing: 4px;
+            color: var(--rail-dark);
+            opacity: 0.6;
+        }
+
+        @media (min-width: 480px) {
+            h1 { font-size: 3rem; }
+            .details-box {
+                grid-template-columns: 1fr 1fr;
+            }
+            .location {
+                grid-column: span 2;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ticket-wrapper">
+        <div class="ticket">
+            <div class="ticket-inner">
+                
+                <h1>All Aboard!</h1>
+                <div class="subtitle">Rowan is turning 3</div>
+
+                <div class="details-box">
+                    <div class="detail-item">
+                        <strong>Date</strong>
+                        <p>Sunday, July 12th</p>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Time</strong>
+                        <p>10:00 AM - 1:00 PM</p>
+                    </div>
+                    <div class="detail-item location">
+                        <strong>Station Location</strong>
+                        <p>78 Auckland St.<br>Dorchester, MA 02125</p>
+                    </div>
+                </div>
+
+                <!-- Replace the "#" inside the href below with your actual Google Form link -->
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSddZnMqOOt8LwwqkNEXmBGEsWDqvsq8jdK6oYX-bHb0USmDOw/viewform?usp=header" target="_blank" class="rsvp-btn">
+                    Punch Your Ticket (RSVP)
+                </a>
+
+                <div class="track-container">
+                    <div class="train">🚂🚃🚃</div>
+                </div>
+
+                <div class="barcode"></div>
+                <div class="ticket-number">TICKET-NO-03</div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
